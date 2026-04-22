@@ -8,7 +8,6 @@ import sessionRoutes from "./src/routes/sessionRoutes.js";
 import attendanceRoutes from "./src/routes/attendenceRoutes.js";
 import summaryRoutes from "./src/routes/summaryRoutes.js";
 import institutionRoutes from "./src/routes/institutionRoutes.js";
-
 dotenv.config();
 
 connectDB();
@@ -16,7 +15,13 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://skill-brige-a8l3.vercel.app",
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
